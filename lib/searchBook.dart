@@ -7,10 +7,6 @@ import 'dart:core';
 import 'searchResultsPage.dart';
 import 'goodReadsSearchResultsPage.dart';
 
-const apiKey =
-    'AIzaSyA4O_8rJbi2UPeVVt2uURYa6ArQG_d2iMU'; // google books api key
-//key: pM6XPJJNY3YRRwZ6YFI7g goodreads api key
-
 class SearchBook extends StatefulWidget {
   @override
   State createState() => _SearchBookState();
@@ -19,7 +15,8 @@ class SearchBook extends StatefulWidget {
 class _SearchBookState extends State<SearchBook> {
   Future searchGoodreadsBook() async {
     final http.Response response = await http.get(
-        'https://www.goodreads.com/search/index.xml?key=pM6XPJJNY3YRRwZ6YFI7g&q=Ender%27s+Game');
+        // API key here
+        );
     // final decodedData = xml.parse(response.body);
     // var elements = decodedData.findAllElements('work');
 
@@ -30,9 +27,9 @@ class _SearchBookState extends State<SearchBook> {
 
   Future searchGoogleBook() async {
     final http.Response response = await http.get(
-        'https://www.googleapis.com/books/v1/volumes?q=$input:keyes&key=$apiKey');
+        // API key here
+        );
     final decodedData = jsonDecode(response.body);
-    //https://www.googleapis.com/books/v1/volumes?q=python:keyes&key=AIzaSyA4O_8rJbi2UPeVVt2uURYa6ArQG_d2iMU
 
     return decodedData;
   }
